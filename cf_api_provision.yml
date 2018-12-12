@@ -33,4 +33,5 @@
         additional_values:
         ems_custom_attributes:
         miq_custom_attributes:
+      validate_certs: no
       return_content: yes
