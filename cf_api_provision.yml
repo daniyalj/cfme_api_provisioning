@@ -17,7 +17,7 @@
           vm_name: "{{ vm_name }}"
           provision_type: vmware
           vm_auto_start: "{{ autostart }}"
-          retirement: 0
+          retirement: 1
           retirement_warn: 604800
           vlan: VM Network
           disk_format: unchanged
