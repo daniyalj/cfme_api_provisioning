@@ -1,0 +1,36 @@
+---
+- hosts: localhost
+  tasks:
+  - name: test uri on cloudforms
+    uri:
+      url: {{ {{ manageiq.api_url }}/api/provision_requests
+      method: POST
+      body_format: json
+      body:
+        version: '1.1'
+        template_fields:
+          name: {{ template_name }}
+          request_type: template
+        vm_fields:
+          addr_mode: dhcp
+          number_of_vms: {{ count }}
+          vm_name: {{ vm_name }}
+          provision_type: vmware
+          vm_auto_start: {{ autostart }}
+          retirement: 0
+          retirement_warn: 604800
+          vlan: VM Network
+          disk_format: unchanged
+          cpu_limit: -1
+          memory_limit: -1
+          number_of_sockets: 2
+          cores_per_socket: 1
+          cpu_reserve: 0
+          vm_memory: '4096'
+          memory_reserve: 0
+          network_adapters: 1
+        tags: {}
+        additional_values:
+        ems_custom_attributes:
+        miq_custom_attributes:
+      return_content: yes
