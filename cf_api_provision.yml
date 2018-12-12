@@ -34,4 +34,7 @@
         ems_custom_attributes:
         miq_custom_attributes:
       validate_certs: no
+      headers:
+        X-Auth-Token: "{{ manageiq.api_token }}"
       return_content: yes
+      status_code: 200
