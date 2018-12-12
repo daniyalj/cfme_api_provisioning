@@ -9,14 +9,14 @@
       body:
         version: '1.1'
         template_fields:
-          name: {{ template_name }}
+          name: "{{ template_name }}"
           request_type: template
         vm_fields:
           addr_mode: dhcp
-          number_of_vms: {{ count }}
+          number_of_vms: "{{ count }}"
           vm_name: {{ vm_name }}
           provision_type: vmware
-          vm_auto_start: {{ autostart }}
+          vm_auto_start: "{{ autostart }}"
           retirement: 0
           retirement_warn: 604800
           vlan: VM Network
@@ -26,7 +26,7 @@
           number_of_sockets: 2
           cores_per_socket: 1
           cpu_reserve: 0
-          vm_memory: {{ memory }}
+          vm_memory: "{{ memory }}"
           memory_reserve: 0
           network_adapters: 1
         tags: {}
