@@ -3,7 +3,7 @@
   tasks:
   - name: test uri on cloudforms
     uri:
-      url: {{ manageiq.api_url }}/api/provision_requests
+      url: "{{ manageiq.api_url }}/api/provision_requests"
       method: POST
       body_format: json
       body:
