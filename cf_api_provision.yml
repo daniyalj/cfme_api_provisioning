@@ -29,6 +29,10 @@
           vm_memory: "{{ memory }}"
           memory_reserve: 0
           network_adapters: 1
+        requester:
+          owner_first_name: Daniyal
+          owner_last_name: Javed
+          owner_email: daniyal.javed@foobar.ca
         tags: {}
         additional_values:
         ems_custom_attributes:
