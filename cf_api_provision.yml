@@ -1,7 +1,7 @@
 ---
 - hosts: localhost
   tasks:
-  - name: Clone template
+  - name: Clone template in VMWare with Cloudforms
     uri:
       url: "{{ manageiq.api_url }}/api/provision_requests"
       method: POST
@@ -23,16 +23,14 @@
           disk_format: unchanged
           cpu_limit: -1
           memory_limit: -1
-          number_of_sockets: 2
-          cores_per_socket: 1
+          number_of_sockets: "{{ num_of_socket }}"
+          cores_per_socket: "{{ core_per_socket }}"
           cpu_reserve: 0
           vm_memory: "{{ memory }}"
           memory_reserve: 0
           network_adapters: 1
         requester:
-          owner_first_name: Daniyal
-          owner_last_name: Javed
-          owner_email: daniyal.javed@foobar.ca
+          owner_email: "{{ email }}"
         tags: {}
         additional_values:
         ems_custom_attributes:
