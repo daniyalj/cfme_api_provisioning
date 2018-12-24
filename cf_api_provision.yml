@@ -35,8 +35,31 @@
         additional_values:
         ems_custom_attributes:
         miq_custom_attributes:
-      validate_certs: no
+#      validate_certs: no
       headers:
         X-Auth-Token: "{{ manageiq.api_token }}"
       return_content: yes
       status_code: 200
+    register: output
+
+#  - debug: msg="{{ output }}"
+
+  - name: get job id
+    set_fact:
+      job_id: "{{ output.json.results[0].id }}"
+
+  - debug: msg="{{ job_id }}"
+
+  - name: Poll the provisioning job request for success
+    uri:
+      url: "{{ manageiq.api_url }}/api/provision_requests"{{ job_id }}"
+      method: GET
+#      validate_certs: no
+      headers:
+        X-Auth-Token: "{{ manageiq.api_token }}"
+      return_content: yes
+      status_code: 200
+    register: result_job
+    until: result_job.json.request_state == "provisioned"
+    retries: 20
+    delay: 10
